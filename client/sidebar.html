@@ -1,0 +1,78 @@
+<template name="sidebar">
+  <ul class="sidebar-nav">
+    <li class="sidebar-brand">
+        <a href="#">
+            Graphs
+        </a>
+    </li>
+    <li>
+        <a href="#" class="options add-new">
+          <span class="name">Add New</span>
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </a>
+        <a href="#" class="options import">
+          <span class="name">Import</span>
+          <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+        </a>
+    </li>
+    {{#each graphs}}
+      {{#with verticesEdges}}
+    <li>
+        <a href="#" class="sidebar-graph {{isActive}}"><span class="name">{{name}}</span><span class="details">Vertices: {{vertices}} Edges: {{edges}}</span></a>
+    </li>
+      {{/with}}
+    {{/each}}
+  </ul>
+  <ul class="sidebar-nav footer-notice">
+    <li>Instructions: Click vertices/edges and use &lt;backspace&gt; to delete. To connect vertices, select a vertex hold shift and select another.</li>
+    <li>Made by <a href="http://sruiz.co.uk">Sebastian Ruiz</a>.</li>
+  </ul>
+  <!-- Modal -->
+  <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Import Graph</h4>
+        </div>
+        <div class="modal-body">
+          <h5>Graph name</h5>
+          <input type="text" class="form-control" id="graphName" placeholder="Enter a name for your graph">
+          <h5>Concise Format</h5>
+          <textarea class="form-control" rows="8"></textarea>
+          <h5><em>Alternatively </em>Standard Format</h5>
+          <textarea class="form-control" rows="8"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Import</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="addNewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Add New Graph</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="graphNameInput">Graph name</label>
+              <input type="text" class="form-control" id="graphName" placeholder="Enter a name for your graph">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary create-new">Create!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</template>

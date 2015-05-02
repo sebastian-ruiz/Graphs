@@ -1,0 +1,46 @@
+<template name="canvas">
+  <div class="menu">
+    <a href="#" class="btn btn-success save">Save</a>
+    <a href="#" class="btn btn-default export">Export</a>
+    <a href="#" class="btn btn-default add-vertex">Add Vertex</a>
+    <a href="#" class="btn btn-danger delete-selected {{selected}}">Delete Selected</a>
+  </div>
+  <div id="cy"></div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Export Graph - {{graphName}}</h4>
+        </div>
+        <div class="modal-body">
+          <h5>Concise Format</h5>
+          <pre>{{conciseArray}}</pre>
+          <h5><em>Alternatively </em>Standard Format</h5>
+          <pre>{{standardArray}}</pre>
+          <h5>JSON Format</h5>
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading json-heading">
+                <h4 class="panel-title">
+                  <a class="accordion-toggle accordian-title " data-toggle="collapse" data-parent="#accordion" href="#panel1">JSON (click to view)</a>
+                </h4>
+              </div>
+              <div id="panel1" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <pre>{{graphJson}}</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
